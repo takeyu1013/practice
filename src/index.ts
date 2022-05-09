@@ -2,13 +2,12 @@ const message: string = "Hello, world!";
 
 console.log(message);
 
-type User = {
+type User = Readonly<{
   id: number;
   name: string;
-};
+}>;
 
-const func = (user: Readonly<User>) => {
-  const { id, name } = user;
+const func = ({ id, name }: User) => {
   console.log(id, name);
 };
 
