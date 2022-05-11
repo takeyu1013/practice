@@ -1,6 +1,21 @@
-const message: string = "Hello, world!";
-
-console.log(message);
+let result = "";
+[...Array(100).keys()]
+  .map((number) => number + 1)
+  .forEach((number, index) => {
+    if (index > 0) {
+      result += " ";
+    }
+    if (number % 3 === 0 && number % 5 === 0) {
+      result += "FizzBuzz";
+    } else if (number % 3 === 0) {
+      result += "Fizz";
+    } else if (number % 5 === 0) {
+      result += "Buzz";
+    } else {
+      result += number;
+    }
+  });
+console.log(result);
 
 type User = Readonly<{
   name: string;
