@@ -1,20 +1,18 @@
-let result = "";
-[...Array(100).keys()]
+const result = [...Array(100).keys()]
   .map((number) => number + 1)
-  .forEach((number, index) => {
-    if (index > 0) {
-      result += " ";
-    }
+  .reduce((previousResults, number, index) => {
+    const space = index > 0 ? " " : "";
     if (number % 3 === 0 && number % 5 === 0) {
-      result += "FizzBuzz";
+      return previousResults + space + "FizzBuzz";
     } else if (number % 3 === 0) {
-      result += "Fizz";
+      return previousResults + space + "Fizz";
     } else if (number % 5 === 0) {
-      result += "Buzz";
+      return previousResults + space + "Buzz";
     } else {
-      result += number;
+      return previousResults + space + `${number}`;
     }
-  });
+  }, "");
+
 console.log(result);
 
 type User = Readonly<{
