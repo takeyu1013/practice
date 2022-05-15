@@ -1,16 +1,15 @@
 const result = [...Array(100).keys()]
   .map((number) => number + 1)
-  .reduce((previousResults, number, index) => {
-    const space = index > 0 ? " " : "";
+  .reduce((previousResult, number, index) => {
+    const string = previousResult + (index > 0 ? " " : "");
     if (number % 3 === 0 && number % 5 === 0) {
-      return previousResults + space + "FizzBuzz";
+      return string + "FizzBuzz";
     } else if (number % 3 === 0) {
-      return previousResults + space + "Fizz";
+      return string + "Fizz";
     } else if (number % 5 === 0) {
-      return previousResults + space + "Buzz";
-    } else {
-      return previousResults + space + `${number}`;
+      return string + "Buzz";
     }
+    return string + `${number}`;
   }, "");
 
 console.log(result);
