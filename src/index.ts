@@ -1,16 +1,22 @@
-const result = [...Array(100).keys()]
-  .map((number) => number + 1)
-  .reduce((previousResult, number, index) => {
-    const string = previousResult + (index > 0 ? " " : "");
-    if (number % 3 === 0 && number % 5 === 0) {
-      return string + "FizzBuzz";
-    } else if (number % 3 === 0) {
-      return string + "Fizz";
-    } else if (number % 5 === 0) {
-      return string + "Buzz";
-    }
-    return string + `${number}`;
-  }, "");
+const getFizzBuzzString = (number: number) => {
+  if (number % 3 === 0 && number % 5 === 0) {
+    return "FizzBuzz";
+  } else if (number % 3 === 0) {
+    return "Fizz";
+  } else if (number % 5 === 0) {
+    return "Buzz";
+  }
+  return `${number}`;
+};
+
+const sequence = (first: number, last: number) =>
+  [...Array(last).keys()].map((number) => number + first);
+
+const result = sequence(1, 100).reduce(
+  (previousResult, number, index) =>
+    previousResult + (index > 0 ? " " : "") + getFizzBuzzString(number),
+  ""
+);
 
 console.log(result);
 
@@ -57,3 +63,16 @@ users.forEach((user) => {
     );
   }
 });
+
+const map = <T, U>(array: T[], callback: (value: T) => U): U[] => {
+  const result: U[] = [];
+  for (const element of array) {
+    result.push(callback(element));
+  }
+  return result;
+};
+
+const data2 = [1, 1, 2, 3, 5, 8, 13];
+
+const result2 = map(data2, (x) => x * 10);
+console.log(result2);
