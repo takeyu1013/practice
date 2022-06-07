@@ -1,3 +1,3 @@
-import { section6 } from "./section6";
+import { section7 } from "./section7";
 
-section6();
+section7();
